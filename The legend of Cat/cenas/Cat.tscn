@@ -1,0 +1,274 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://src/sprite/actors/sprite_base_addon_2012_12_14.png" type="Texture" id=1]
+[ext_resource path="res://classes/Cat.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 14 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "andando"
+length = 0.6
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0785224, 0.157695, 0.231395, 0.312619, 0.390997, 0.466065, 0.537062 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 21, 88, 18, 30 ), Rect2( 85, 88, 18, 30 ), Rect2( 148, 88, 19, 30 ), Rect2( 213, 88, 17, 30 ), Rect2( 277, 88, 18, 30 ), Rect2( 341, 88, 18, 30 ), Rect2( 148, 87, 20, 31 ), Rect2( 85, 88, 18, 30 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 21, 729, 18, 29 ), Rect2( 85, 729, 18, 29 ), Rect2( 144, 729, 28, 29 ), Rect2( 207, 729, 29, 29 ), Rect2( 85, 729, 18, 29 ), Rect2( 21, 729, 18, 29 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("area_do_chute/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "dano"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.858824, 0.12549, 0.12549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.858824, 0.12549, 0.12549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "morte"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 21, 281, 29, 29 ), Rect2( 85, 281, 29, 29 ), Rect2( 149, 281, 29, 29 ), Rect2( 205, 281, 29, 29 ), Rect2( 268, 281, 29, 29 ), Rect2( 332, 281, 29, 29 ), Rect2( 396, 281, 29, 29 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.33
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0852704, 0.173902, 0.272534 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 21, 25, 18, 29 ), Rect2( 85, 25, 18, 29 ), Rect2( 149, 25, 18, 29 ), Rect2( 213, 24, 18, 31 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite_base_addon_2012_12_14:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 214, 151, 16, 30 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "andando"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "chute_alto"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "morte"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "parado"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "pulo1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=27]
+states/andando/node = SubResource( 8 )
+states/andando/position = Vector2( 168, -267.932 )
+states/chute_alto/node = SubResource( 9 )
+states/chute_alto/position = Vector2( 568, 54 )
+states/morte/node = SubResource( 10 )
+states/morte/position = Vector2( 521, -241.932 )
+states/parado/node = SubResource( 11 )
+states/parado/position = Vector2( 163, 54 )
+states/pulo/node = SubResource( 12 )
+states/pulo/position = Vector2( 300, -49.932 )
+transitions = [ "parado", "andando", SubResource( 13 ), "andando", "parado", SubResource( 14 ), "parado", "chute_alto", SubResource( 15 ), "chute_alto", "parado", SubResource( 16 ), "andando", "chute_alto", SubResource( 17 ), "chute_alto", "andando", SubResource( 18 ), "pulo", "parado", SubResource( 19 ), "andando", "pulo", SubResource( 20 ), "pulo", "chute_alto", SubResource( 21 ), "parado", "pulo", SubResource( 22 ), "andando", "morte", SubResource( 23 ), "pulo", "morte", SubResource( 24 ), "chute_alto", "morte", SubResource( 25 ), "parado", "morte", SubResource( 26 ) ]
+start_node = "parado"
+end_node = "morte"
+graph_offset = Vector2( 5, -304.932 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 7, 16 )
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 5, 6 )
+
+[node name="Cat" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 7.0 ]
+}
+life = 9
+speed = Vector2( 200, 800 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sprite_base_addon_2012_12_14" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 149, 25, 18, 29 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/andando = SubResource( 2 )
+anims/chute_alto = SubResource( 3 )
+anims/dano = SubResource( 4 )
+anims/morte = SubResource( 5 )
+anims/parado = SubResource( 6 )
+anims/pulo1 = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 27 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 28 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1200
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+margin_left = -14.0
+margin_top = 11.0
+margin_right = 108.0
+margin_bottom = 25.0
+text = "Vidas: 9"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Camera2D/CanvasLayer"]
+margin_left = 310.0
+margin_top = 151.0
+margin_right = 350.0
+margin_bottom = 165.0
+text = "fim"
+clip_text = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="detectorRatos" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectorRatos"]
+shape = SubResource( 29 )
+
+[node name="area_do_chute" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_do_chute"]
+position = Vector2( 12, 0 )
+shape = SubResource( 30 )
+disabled = true
+[connection signal="body_entered" from="detectorRatos" to="." method="_on_detectorRatos_body_entered"]

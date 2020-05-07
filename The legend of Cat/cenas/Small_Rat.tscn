@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/sprite/actors/rat and bat spritesheet calciumtrice.png" type="Texture" id=1]
+[ext_resource path="res://cenas/Small_Rat.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "andando"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rat:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 86, 16, 10 ), Rect2( 41, 86, 16, 10 ), Rect2( 73, 86, 16, 10 ), Rect2( 105, 86, 16, 10 ), Rect2( 137, 86, 16, 10 ), Rect2( 169, 86, 16, 10 ), Rect2( 201, 86, 16, 10 ), Rect2( 233, 86, 16, 10 ), Rect2( 265, 86, 16, 10 ), Rect2( 297, 86, 16, 10 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "dano"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("rat:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.827451, 0.196078, 0.196078, 1 ), Color( 1, 1, 1, 1 ), Color( 0.827451, 0.196078, 0.196078, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("rat:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 53, 14, 11 ), Rect2( 41, 53, 14, 11 ), Rect2( 73, 53, 16, 11 ), Rect2( 108, 53, 12, 11 ), Rect2( 141, 53, 11, 11 ), Rect2( 173, 53, 12, 11 ), Rect2( 205, 53, 11, 11 ), Rect2( 237, 53, 12, 11 ), Rect2( 205, 53, 11, 11 ), Rect2( 237, 53, 12, 11 ), Rect2( 205, 53, 11, 11 ), Rect2( 237, 53, 12, 11 ), Rect2( 205, 53, 11, 11 ), Rect2( 237, 53, 12, 11 ), Rect2( 267, 53, 14, 11 ), Rect2( 297, 53, 15, 11 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 9, 7 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 7, 4 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 4
+script = ExtResource( 2 )
+life = 5
+
+[node name="rat" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 9, 86, 16, 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/andando = SubResource( 1 )
+anims/dano = SubResource( 2 )
+anims/levantar = SubResource( 3 )
+
+[node name="detector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 5 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+process_parent = true
+physics_process_parent = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="detector" to="." method="_on_detector_area_entered"]
+[connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]

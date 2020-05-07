@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Áudio de A (online-audio-converter.com) (3).ogg-193f4003d4cf608c35578c55d72ab185.oggstr"
+
+[deps]
+
+source_file="res://src/sons/Áudio de A (online-audio-converter.com) (3).ogg"
+dest_files=[ "res://.import/Áudio de A (online-audio-converter.com) (3).ogg-193f4003d4cf608c35578c55d72ab185.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
