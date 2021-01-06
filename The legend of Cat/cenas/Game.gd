@@ -5,8 +5,6 @@ onready var music_boss = $boss
 onready var music_entrefase = $entrefase
 
 
-
-
 func _ready() -> void:
 	music_principal.play()
 
